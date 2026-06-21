@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>pg模拟器 · 再访与收藏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f9fc;
+            color: #1a2d34;
+            line-height: 1.7;
+            padding: 0 1rem 3rem;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* tiny hero */
+        .hero {
+            padding: 3.5rem 0 2rem;
+            text-align: center;
+        }
+
+        .hero small {
+            display: block;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #3f8a8c;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #11525c;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #2b7a7e, #4f9e9a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            color: #2d5458;
+            max-width: 600px;
+            margin: 1.25rem auto 0;
+            font-weight: 380;
+        }
+
+        /* narrative paragraph */
+        .story {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 1.75rem;
+            margin: 1.8rem 0 2.5rem;
+            box-shadow: 0 6px 18px rgba(27, 85, 88, 0.04), 0 2px 6px rgba(0,30,30,0.02);
+        }
+
+        .story p {
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+            color: #1f3e41;
+        }
+
+        .story p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story a {
+            color: #1c7c7a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #b0d6d4;
+            transition: border-color 0.2s;
+        }
+
+        .story a:hover {
+            border-bottom-color: #1c7c7a;
+        }
+
+        /* grid cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.4rem 1.2rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(34, 85, 85, 0.03);
+            border: 1px solid #e3eff0;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 24px -8px rgba(35, 105, 105, 0.12);
+            transform: translateY(-3px);
+            border-color: #b9d8d8;
+        }
+
+        .card .icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2f8688;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #10575c;
+            margin-bottom: 0.35rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #386064;
+        }
+
+        /* soft quote / hint */
+        .note-wrapper {
+            background: #e7f3f2;
+            border-radius: 30px;
+            padding: 1.7rem 1.8rem;
+            margin: 2.5rem 0 2rem;
+            border-left: 4px solid #4e9b98;
+        }
+
+        .note-wrapper p {
+            font-size: 0.98rem;
+            color: #1d5153;
+        }
+
+        .note-wrapper strong {
+            color: #10585b;
+        }
+
+        .faq-mini {
+            margin: 2.5rem 0 1.5rem;
+            border-top: 1px solid #d3e5e6;
+            padding-top: 1.8rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item .q {
+            font-weight: 550;
+            color: #115a5d;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .a {
+            color: #2a5a5c;
+            font-size: 0.95rem;
+            padding-left: 0.25rem;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #608587;
+            border-top: 1px solid #d2e4e5;
+            padding-top: 2rem;
+        }
+
+        .footer-note a {
+            color: #286f70;
+            text-decoration: none;
+            border-bottom: 1px dotted #91bcbc;
+        }
+
+        .footer-note a:hover {
+            border-bottom-style: solid;
+        }
+
+        @media (max-width: 540px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .story {
+                padding: 1.6rem 1.2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+            .card {
+                padding: 1rem 0.9rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- hero 短句 -->
+    <div class="hero">
+        <small>◈ 再次遇见 · 安静角落</small>
+        <h1>关于 <span>pg模拟器</span></h1>
+        <div class="lead">有时你会回到同一个地方，不是因为那里新鲜，而是因为它值得被记住。</div>
+    </div>
+
+    <!-- 承接段落 · 再次访问与收藏 -->
+    <div class="story">
+        <p>
+            如果你曾经打开过这个页面，那么很可能是因为那一次你随手试了试，然后发现有些工具不需要太多修饰，简单、直接，反而让人愿意再去用一次。就像某个下午你偶然打开的 <a href="https://demo-pgsimulator.com">pg模拟器</a>，它既不是一个需要反复学习的复杂系统，也不是什么花哨的演示玩具。它更像一个安静的测试间，你带着自己的数据或想法进去，然后看到结果，然后关掉。没有多余的推送，没有打扰。
+        </p>
+        <p>
+            但有趣的是，过了一阵子，你又会想起它。不是因为它提醒了你，而是因为某个场景——比如你需要快速验证一组 PostgreSQL 查询，或者想对比不同参数对执行计划的影响——这时候你发现收藏夹里最好有它。所以我把它放在了书签栏，也写在这里。
+        </p>
+        <p>
+            这也是为什么这个页面存在：不是为了兜售什么，而是提供一个温和的入口，让有需要的人能再次找到这个地方。你可以随时回来，看一看，用一用，然后继续做自己的事。
+        </p>
+    </div>
+
+    <!-- 特点卡片网格 -->
+    <div class="feature-grid">
+        <div class="card">
+            <span class="icon">⚙️</span>
+            <h3>即时查询</h3>
+            <p>输入 SQL，立刻看到执行计划与耗时，没有等待队列。</p>
+        </div>
+        <div class="card">
+            <span class="icon">📐</span>
+            <h3>参数可调</h3>
+            <p>修改 work_mem、seq_page_cost 等参数，观察计划如何变化。</p>
+        </div>
+        <div class="card">
+            <span class="icon">📋</span>
+            <h3>历史记录</h3>
+            <p>浏览器保留你上次的查询，适合反复对比与调试。</p>
+        </div>
+        <div class="card">
+            <span class="icon">🔒</span>
+            <h3>隔离环境</h3>
+            <p>每个连接独立，不会影响任何真实数据库。</p>
+        </div>
+    </div>
+
+    <!-- 温和提示 / 场景 -->
+    <div class="note-wrapper">
+        <p><strong>一些你可能已经知道的：</strong> 这个工具不保存你的数据到服务器，所有查询都在临时内存中进行。如果你在排查一个慢查询或者想学习索引效果，它比本地搭环境快很多。而且，下次再打开时——如果浏览器允许——它会记得你上次写了一半的 SQL。</p>
+    </div>
+
+    <!-- 简短 FAQ 摘要，叙述感 -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <span class="q">▸ 为什么我上次的查询还在？</span>
+            <span class="a">利用 localStorage 保留最近一次输入，清空浏览数据后会消失。不是云存储。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">▸ 支持哪些 PostgreSQL 版本特性？</span>
+            <span class="a">基于 PG 15 环境模拟，涵盖大部分常用语法与执行计划展示。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">▸ 需要注册或登录吗？</span>
+            <span class="a">不需要。打开即用，没有账户体系。</span>
+        </div>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="footer-note">
+        <p>如果你觉得这个页面有用，可以收藏它。<br>
+        或者直接记住这里：<a href="https://demo-pgsimulator.com">pg模拟器</a> —— 一个安静、可重复使用的工具页面。</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.65;">下次再见。</p>
+    </div>
+</div>
+</body>
+</html>
