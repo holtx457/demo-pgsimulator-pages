@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>九游娱乐 · 故事</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf8f6;
+      color: #2c2b28;
+      font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 680px;
+      width: 90%;
+      margin: 3rem auto 4rem;
+      padding: 0.5rem;
+    }
+
+    /* 开场 —— 短句 */
+    .opening {
+      margin-bottom: 2.2rem;
+      border-left: 4px solid #d9c8b0;
+      padding-left: 1.4rem;
+    }
+    .opening h1 {
+      font-size: 2.6rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: #3f3c36;
+      line-height: 1.2;
+    }
+    .opening .sub {
+      font-size: 1.1rem;
+      color: #8b8277;
+      margin-top: 0.5rem;
+      font-weight: 350;
+    }
+
+    /* 承接段落 */
+    .story-block {
+      margin: 2rem 0 2.8rem;
+    }
+    .story-block p {
+      margin-bottom: 1.4rem;
+      font-size: 1rem;
+      color: #3a3732;
+      text-align: justified;
+    }
+    .story-block p:first-child {
+      font-size: 1.08rem;
+    }
+
+    /* 特点列表 —— 温和卡片式 */
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 2.8rem 0 2.5rem;
+    }
+    .feature-item {
+      background: #ffffffec;
+      border-radius: 24px;
+      padding: 1.2rem 1.6rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 6px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #f0ece6;
+      transition: box-shadow 0.2s ease, background 0.2s;
+    }
+    .feature-item:hover {
+      background: #fffdfa;
+      box-shadow: 0 8px 20px rgba(130, 105, 80, 0.04);
+    }
+    .feature-item h3 {
+      font-size: 1.2rem;
+      font-weight: 450;
+      color: #4a443b;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.01em;
+    }
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #5f5a50;
+      line-height: 1.6;
+      margin-top: 0.2rem;
+    }
+
+    /* 温和结尾 */
+    .closing {
+      margin-top: 3rem;
+      padding: 1.6rem 0;
+      border-top: 1px solid #e6dfd6;
+      font-size: 0.98rem;
+      color: #5c574e;
+    }
+    .closing p {
+      margin-bottom: 0.8rem;
+    }
+    .closing .signature {
+      font-style: normal;
+      margin-top: 0.8rem;
+      color: #8f877c;
+    }
+
+    /* 内嵌链接 */
+    a {
+      color: #8f6f4c;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 1px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    a:hover {
+      color: #6d5540;
+      border-bottom-color: #b8a693;
+    }
+
+    /* FAQ 摘要 (简短) */
+    .faq-hint {
+      margin: 2.2rem 0 1rem;
+      background: #f5f1eb;
+      border-radius: 20px;
+      padding: 1.2rem 1.6rem;
+    }
+    .faq-hint summary {
+      font-weight: 450;
+      color: #3f3a32;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.2rem 0;
+      list-style: none;
+    }
+    .faq-hint summary::marker,
+    .faq-hint summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-hint summary:before {
+      content: '▸ ';
+      color: #b7a48c;
+      font-size: 1.1rem;
+    }
+    .faq-hint[open] summary:before {
+      content: '▾ ';
+    }
+    .faq-hint .faq-content {
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+      color: #555048;
+      border-top: 1px solid #e0d7cc;
+      padding-top: 1rem;
+    }
+    .faq-hint .faq-content p {
+      margin-bottom: 0.4rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      .container {
+        width: 92%;
+        margin: 2rem auto 3rem;
+      }
+      .opening h1 {
+        font-size: 2rem;
+      }
+      .feature-item {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    /* 小点缀 — 极简留白 */
+    .quiet-break {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #ddd6cc, transparent);
+      margin: 1.8rem 0 2.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 开场短句 -->
+    <div class="opening">
+      <h1>某个下午，<br>生活忽然慢了下来。</h1>
+      <div class="sub">—— 关于短暂休憩与陪伴的叙说</div>
+    </div>
+
+    <!-- 承接段落 / 故事叙述 -->
+    <div class="story-block">
+      <p>
+        你或许也有过这样的时刻：傍晚的光斜斜照进窗台，手边一杯半温的茶，手机屏幕上跳动着熟悉的图标。那些不用刻意安排的小小娱乐，像一阵柔和的风，把日子里的褶皱轻轻抚平。正是在这些微小的间隙里，<a href="https://mobile-official-jiuyou.com">九游娱乐</a>成为许多人安静而熟悉的陪伴——它不喧哗，不催促，只是恰好在那个位置，等你随意点开。
+      </p>
+      <p>
+        没有宏大的叙事，也没有急促的节奏。每一次滑动、每一帧画面，都更像是一次放松的散步。不需要太多学习，不必追赶进度，它就在那里，像一本翻到一半的闲书，随时可以继续。这也是我们理解中，数字时代里一点朴素的温存。
+      </p>
+    </div>
+
+    <!-- 特点列表 (卡片式) -->
+    <div class="feature-list">
+      <div class="feature-item">
+        <h3>· 轻触即达</h3>
+        <p>界面干净直接，减少多余步骤，让注意力回到内容本身。没有复杂层级，每一步都自然。</p>
+      </div>
+      <div class="feature-item">
+        <h3>· 日常陪伴感</h3>
+        <p>无论午后通勤，还是睡前片刻，打开<strong>九游娱乐</strong>就像翻几页喜欢的杂志，熟悉又放松。</p>
+      </div>
+      <div class="feature-item">
+        <h3>· 安静不打扰</h3>
+        <p>没有弹窗轰炸，没有夸张特效。只用平实的视觉和克制的动效，营造属于你的一方小天地。</p>
+      </div>
+      <div class="feature-item">
+        <h3>· 偶尔的新鲜</h3>
+        <p>内容会悄悄更新，带来一些意料之外的趣味，但从不逼迫你去探索。一切随你心意。</p>
+      </div>
+    </div>
+
+    <!-- 简短 FAQ 摘要 -->
+    <details class="faq-hint">
+      <summary>一些你可能想问的</summary>
+      <div class="faq-content">
+        <p><strong>这个网站适合什么样的人？</strong> 任何希望在工作、学习之余拥有一小段不费力娱乐时光的人。没有年龄或偏好限制。</p>
+        <p><strong>需要注册或付费吗？</strong> 大部分内容直接可见，具体规则以页面说明为准。建议直接浏览 <a href="https://mobile-official-jiuyou.com">九游娱乐</a> 了解当前设置。</p>
+        <p><strong>内容更新频率如何？</strong> 根据运营节奏不定期补充，保持适度的新鲜感。你随时打开，都有可看的东西。</p>
+      </div>
+    </details>
+
+    <div class="quiet-break"></div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+      <p>
+        我们并不需要每时每刻都被填满。有时候，一份温和的、不打扰的陪伴，就足以让一天变得柔软。如果你也喜欢这种节奏，不妨在某个安静的空隙，试着走进 <a href="https://mobile-official-jiuyou.com">九游娱乐</a> 看看——它也许正合你此刻的心境。
+      </p>
+      <p class="signature">
+        — 故事到这里，接下来由你续写。
+      </p>
+    </div>
+  </div>
+</body>
+</html>
