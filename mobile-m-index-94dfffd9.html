@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>九游娱乐 · 常来常新</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f7fa;
+      color: #1f2a33;
+      line-height: 1.6;
+      padding: 1.2rem 1rem 3rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 蓝绿点缀 – 卡片 & 强调 */
+    .accent-border {
+      border-left: 4px solid #2a9d8f;
+      padding-left: 0.8rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e0f2f1;
+      color: #1b7a6e;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      margin-bottom: 0.3rem;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, #eaf6f5 0%, #d4ece8 100%);
+      padding: 1.8rem 1.2rem 2rem;
+      border-radius: 32px;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 14px rgba(42, 157, 143, 0.10);
+    }
+
+    .hero h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #124a41;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #1e7a6b, #2a9d8f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      color: #2d4b47;
+      max-width: 90%;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.2rem 1rem;
+      box-shadow: 0 3px 12px rgba(0, 30, 30, 0.04);
+      transition: transform 0.1s ease;
+      border: 1px solid #e1f0ed;
+    }
+
+    .card:active {
+      transform: scale(0.98);
+    }
+
+    .card-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #124a41;
+      margin-bottom: 0.25rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #3b5c57;
+      line-height: 1.5;
+    }
+
+    /* 宽卡片（场景/说明） */
+    .wide-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.4rem 1.3rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 3px 14px rgba(42, 157, 143, 0.04);
+      border: 1px solid #e3f0ed;
+    }
+
+    .wide-card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #124a41;
+      margin-bottom: 0.5rem;
+    }
+
+    .wide-card .sub {
+      font-size: 0.8rem;
+      color: #4f7570;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.6rem;
+    }
+
+    .wide-card ul {
+      margin: 0.6rem 0 0.2rem 1rem;
+      color: #2d4b47;
+    }
+
+    .wide-card li {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .tag {
+      background: #e6f3f0;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      color: #1d6b60;
+    }
+
+    /* 提示 / FAQ 摘要 */
+    .tip-box {
+      background: #f0faf8;
+      border-radius: 26px;
+      padding: 1.2rem 1.2rem 1rem;
+      margin: 1.6rem 0 1rem;
+      border: 1px solid #c4e3dd;
+    }
+
+    .tip-box strong {
+      color: #16695c;
+    }
+
+    .faq-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 50px;
+      padding: 0.7rem 1rem;
+      border: 1px solid #e0eeea;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #124a41;
+      min-width: 4.2rem;
+    }
+
+    .faq-a {
+      color: #2f5b55;
+    }
+
+    /* 链接样式 */
+    a {
+      color: #1b7a6e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b2d8d2;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #1b7a6e;
+    }
+
+    /* 收藏按钮模拟（纯样式） */
+    .bookmark-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #dfefe9;
+      padding: 0.2rem 1rem 0.2rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      color: #16695c;
+    }
+
+    /* footer */
+    .footer-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6e8f89;
+      border-top: 1px solid #d3e6e1;
+      padding-top: 1.2rem;
+    }
+
+    .footer-note a {
+      color: #2a7b6f;
+    }
+
+    /* 响应式 */
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 1.6rem; }
+      .card-grid { gap: 0.7rem; }
+      .card { padding: 1rem 0.9rem; }
+      .wide-card { padding: 1.2rem 1rem; }
+      .faq-item { flex-wrap: wrap; gap: 0.2rem; padding: 0.6rem 0.9rem; }
+      .faq-q { min-width: auto; font-size: 0.8rem; }
+      .faq-a { font-size: 0.8rem; }
+    }
+
+    @media (min-width: 600px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .card:nth-child(4) {
+        grid-column: span 1;
+      }
+      .hero p { max-width: 75%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- hero 欢迎再访 -->
+    <div class="hero">
+      <div class="badge">· 收藏 · 常回</div>
+      <h1><span>九游娱乐</span><br>每次回来都有新内容</h1>
+      <p>一个认真整理过的页面，适合再次打开、慢慢浏览。把这里加入书签，下次再来不会迷路。</p>
+    </div>
+
+    <!-- 亮点卡片网格 -->
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">📌</div>
+        <h3>快速定位</h3>
+        <p>不论上次看到哪，回来就能接着逛。结构清晰，找内容不费力。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔖</div>
+        <h3>随时收藏</h3>
+        <p>把<a href="https://mobile-m-jiuyou.com">九游娱乐</a>放进收藏夹，下次点击就能直达，省去搜索时间。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <h3>常更常新</h3>
+        <p>页面内容不定期调整，再访时总能发现不一样的整理和细节。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧩</div>
+        <h3>轻量呈现</h3>
+        <p>信息卡片化，移动端友好。在手机上阅读、浏览都自然顺手。</p>
+      </div>
+    </div>
+
+    <!-- 使用建议 + 再次访问 -->
+    <div class="wide-card">
+      <h2>📖 怎样用好这个页面</h2>
+      <div class="sub">从「再回来」的角度整理的建议</div>
+      <ul>
+        <li><strong>加入书签</strong> – 在浏览器中将当前页收藏，下一次直接通过书签打开。</li>
+        <li><strong>定期回访</strong> – 每隔一两周回来看看，留意卡片和提示区的更新。</li>
+        <li><strong>关注变化</strong> – 页面结构会微调，每次访问都可能遇到不一样的信息组织方式。</li>
+        <li><strong>自然浏览</strong> – 不需要刻意操作，像翻一个小册子一样滑到底就好。</li>
+      </ul>
+      <div style="margin-top: 0.7rem;">
+        <span class="bookmark-note">⭐ 已收藏 · 常驻入口</span>
+      </div>
+    </div>
+
+    <!-- 使用场景 + 为何持续关注 -->
+    <div class="wide-card">
+      <h2>🎯 适合这些时刻</h2>
+      <div class="tag-list">
+        <span class="tag">通勤间隙</span>
+        <span class="tag">午休翻阅</span>
+        <span class="tag">睡前浏览</span>
+        <span class="tag">等车时</span>
+      </div>
+      <p style="margin-top: 0.6rem; font-size: 0.9rem;">
+        不需要大段时间，短短几分钟就能看完一组卡片。把<a href="https://mobile-m-jiuyou.com">九游娱乐</a>当作一个可以随时打开的轻量信息页，不用惦记进度，每次都是新的开始。
+      </p>
+      <p style="margin-top: 0.4rem; font-size: 0.85rem; color: #3b6b64;">
+        持续关注的意义在于：你不必每次都重新适应，页面风格统一，但内容呈现会保持适度变化。
+      </p>
+    </div>
+
+    <!-- 提示区 + 克制的访问说明 -->
+    <div class="tip-box">
+      <strong>💡 一点提示</strong>
+      <p style="margin-top: 0.3rem; font-size: 0.9rem;">
+        本页是对 <a href="https://mobile-m-jiuyou.com">九游娱乐</a> 的介绍与整理，内容基于可公开访问的信息。页面不收集任何个人数据，也没有自动跳转或诱导操作。如果你觉得有用，随时可以再来看看。
+      </p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #3d716a;">
+        所有链接指向同一个网址，保持入口简洁。你不需要额外注册或关注，打开即阅。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要（三个常见疑问） -->
+    <div style="margin: 0.8rem 0 0.2rem;">
+      <h3 style="font-weight: 500; font-size: 0.95rem; color: #124a41; margin-bottom: 0.3rem;">❓ 常见疑问 · 简短回答</h3>
+    </div>
+    <div class="faq-summary">
+      <div class="faq-item">
+        <span class="faq-q">页面会变吗？</span>
+        <span class="faq-a">会，结构和卡片内容会不定期微调。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">需要登录吗？</span>
+        <span class="faq-a">不需要，直接打开就能浏览全部内容。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">怎么最快回来？</span>
+        <span class="faq-a">收藏本页或记住 <a href="https://mobile-m-jiuyou.com">九游娱乐</a> 这个地址。</span>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+      <span>持续整理 · 简洁呈现 · <a href="https://mobile-m-jiuyou.com">九游娱乐</a></span><br>
+      <span style="opacity: 0.65;">移动端友好 · 可收藏</span>
+    </div>
+
+  </div>
+</body>
+</html>
